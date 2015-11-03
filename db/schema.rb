@@ -11,9 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151103004407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auths", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "auths", ["provider"], name: "index_auths_on_provider", using: :btree
+  add_index "auths", ["uid"], name: "index_auths_on_uid", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.integer  "primary_id"
+    t.string   "username",            default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
