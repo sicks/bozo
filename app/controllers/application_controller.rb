@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def slugroute
     render text: "page", layout: "application"
   end
+
+  def new_session_path(scope)
+    new_user_session_path
+  end
 end
