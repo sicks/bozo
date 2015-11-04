@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user_signed_in?
       additional_auth = current_user.auths.build( provider: auth_hash.provider, uid: auth_hash.uid )
       if additional_auth.save
-        redirect_to edit_user_registration_path, notice: "New Auth successfully added"
+        redirect_to edit_user_registration_path, notice: "New #{additional_auth.name.humanize} Auth successfully added"
       end
     else
       @user = User.from_omniauth( request.env["omniauth.auth"] )

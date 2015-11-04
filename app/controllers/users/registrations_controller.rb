@@ -22,6 +22,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
   end
 
+  def destroy
+    @auth = current_user.auths.find(params[:auth])
+
+    if @auth && current_user.auths.count > 1
+      flash[:notice] = "#{@auth.name.humanize} Auth Deleted"
+      @auth.destroy
+    else
+      flash[:alert] = "You cannot delete all your auths"
+    end
+    redirect_to edit_user_registration_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, auths_attributes: [:provider, :uid])
