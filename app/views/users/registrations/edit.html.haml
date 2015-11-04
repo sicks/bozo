@@ -1,0 +1,18 @@
+%h3 Edit User
+
+%p= "Your username is: #{current_user.username}"
+
+%h3 Auths
+%p= "You're authenticated via the following:"
+%ul
+  - current_user.auths.each do |auth|
+    - name = /^[a-zA-Z]+(?=_)?/.match( auth.provider ).to_s
+    %li= icon name, name.humanize
+
+-if current_user.auths.count < 2
+  %h3 Add Auths
+  %p You can associate a steam account, a google account, or both to manage your identity
+  - if current_user.auths.first.provider != "steam"
+    = link_to icon("steam", "Add a Steam account"), user_omniauth_authorize_path(:steam)
+  - else
+    = link_to icon("google", "Add a Google account"), user_omniauth_authorize_path(:google_oauth2)

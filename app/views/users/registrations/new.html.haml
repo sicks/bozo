@@ -1,0 +1,13 @@
+%h3 New User
+
+= form_for( @user, url: user_registration_path ) do |f|
+  - if @user.errors.any?
+    #error_explaination
+      %h6= pluralize(@user.errors.count, 'error') + 'prohibited this account from being created'
+      %ul
+        - @user.errors.each do |message|
+          %li= message
+  = f.label :username
+  = f.text_field :username
+
+  = f.submit
