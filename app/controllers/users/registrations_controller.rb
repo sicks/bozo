@@ -5,18 +5,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    params[:user].merge!(auths_attributes: [(session["devise.google_data"] || session["devise.steam_data"])])
+    auth_hash = (session["devise.google_data"] || session["devise.steam_data"])
+    params[:user].merge!(auths_attributes: [ auth_hash ])
+
     @user = User.new( user_params )
 
     if @user.save
-      sign_in_and_redirect @user, event: :authentication, notice: "New Account Created"
+      sign_in @user, event: :authentication
+      redirect_to root_path, notice: "Registration Successful"
     else
       render :new
     end
   end
 
   def edit
-
+    @user = current_user
   end
 
   private

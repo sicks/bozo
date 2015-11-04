@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'app/models/auths.rb', type: :model do
+RSpec.describe 'Unit Tests for: app/models/auths.rb', type: :model do
   let(:auth) { create(:steam_auth) }
   let(:another) { create(:google_auth) }
   let(:all) { Auth.all }

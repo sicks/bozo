@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'app/models/user.rb', type: :model do
+RSpec.describe 'Unit Tests for: app/models/user.rb', type: :model do
   let!(:user) { create(:user) }
   let(:auth_hash) { OmniAuth::AuthHash.new( attributes_for :steam_auth ) }
 
@@ -24,7 +24,7 @@ RSpec.describe 'app/models/user.rb', type: :model do
   end
 
   describe User, "methods" do
-    describe ".from_omniauth( auth_hash )" do
+    describe "::from_omniauth( auth_hash )" do
       let(:new_user) { User.from_omniauth( auth_hash ) }
 
       context "when this user's already registered" do
