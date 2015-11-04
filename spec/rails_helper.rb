@@ -29,6 +29,9 @@ require 'support/omniauth.rb'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  # Clean up the stacktrace a bit
+  config.backtrace_exclusion_patterns << /\.gem/
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
