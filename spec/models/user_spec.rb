@@ -23,7 +23,7 @@ RSpec.describe 'app/models/user.rb', type: :model do
     end
   end
 
-  describe User, "class methods" do
+  describe User, "methods" do
     describe ".from_omniauth( auth_hash )" do
       let(:new_user) { User.from_omniauth( auth_hash ) }
 

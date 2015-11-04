@@ -1,31 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe Auth, type: :model do
+RSpec.describe 'app/models/auths.rb', type: :model do
   let(:auth) { create(:steam_auth) }
+  let(:another) { create(:google_auth) }
+  let(:all) { Auth.all }
 
-  it 'has a valid factory' do
-    expect( auth.valid? ).to eq true
+  describe Auth, 'scopes' do
+    specify 'default: oldest to newest' do
+      another
+      expect( all.first.created_at ).to be < all.last.created_at
+    end
   end
 
-  it 'is invalid without a uid' do
-    auth.uid = nil
-    expect( auth.valid? ).to eq false
-  end
-
-  it 'is invalid without a provider' do
-    auth.provider = nil
-    expect( auth.valid? ).to eq false
-  end
-
-  it 'is invalid without a user' do
-    auth.user = nil
-    expect( auth.valid? ).to eq false
-  end
-
-  it 'is sorted oldest to newest' do
-    another_auth = create(:google_auth)
-    all_auths = Auth.all
-
-    expect( all_auths.first.created_at ).to be < all_auths.last.created_at
+  describe Auth, 'validates' do
+    %w[uid provider user].each do |attribute|
+      specify "presence of #{attribute}" do
+        setter = attribute + "="
+        auth.send setter.to_sym, nil
+        expect( auth.valid? ).to eq false
+      end
+    end
   end
 end
