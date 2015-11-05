@@ -12,7 +12,9 @@
   %body
     = render "layouts/main_navigation"
     .flash
-      = render_flash
+      - flash.each do |type, message|
+        = render partial: 'layouts/flash', locals: { type: type, message: message }
+
     %main.row
       .small-12.columns
         = yield

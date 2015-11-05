@@ -12,7 +12,7 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
         click_link 'login'
         click_link strategy
         fill_in 'user_username', with: "banana"
-        click_button 'Create User'
+        click_button 'submit'
 
         expect( page ).to have_content "Registration Successful"
         expect( page ).to have_content "banana"
