@@ -1,10 +1,13 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:username) { |n| "example#{n}" }
-
     after(:create) do |user|
-      user.auths.create( attributes_for :steam_auth )
-      user.auths.create( attributes_for :google_auth )
+      user.chars.create( attributes_for :crest_char )
+    end
+  end
+
+  factory :user_sicks, class: User do
+    after(:create) do |user|
+      user.chars.create( attributes_for :crest_sicks )
     end
   end
 end

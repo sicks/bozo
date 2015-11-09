@@ -1,7 +1,7 @@
 %nav.top-bar{ data: { topbar: true }, role: :navigation }
   %ul.title-area
     %li.name
-      %h1= link_to "mapspawn", root_path
+      %h1= link_to "bozo", root_path
     %li.toggle-topbar.menu-icon
       = link_to "#" do
         %span Menu
@@ -9,16 +9,13 @@
     %ul.right
       - if user_signed_in?
         %li.has-dropdown
-          = link_to icon("user", current_user.username)
+          = link_to icon("user", current_user.name)
           %ul.dropdown
             %li= link_to "Account", edit_user_registration_path, title: "account"
             %li= link_to "Log Out", destroy_user_session_path, method: :delete, title: "logout"
       - else
-        %li.has-dropdown
-          = link_to "Log In/Sign Up", "#", title: "login"
-          %ul.dropdown
-            %li= link_to icon("google", "via Google"), user_omniauth_authorize_path(:google_oauth2), title: "google"
-            %li= link_to icon("steam", "via Steam"), user_omniauth_authorize_path(:steam), title: "steam"
+        %li
+          = link_to icon("bars", "Log In"), user_omniauth_authorize_path(:crest), title: "login"
     %ul.left
       %li
         = link_to "filter", "#"

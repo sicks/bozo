@@ -1,4 +1,3 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
-    provider :steam, ENV['STEAM_API_KEY']
+    provider :crest, ENV["CREST_CLIENT_ID"], ENV["CREST_SECRET_KEY"]
 end

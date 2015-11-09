@@ -6,78 +6,76 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
       User.destroy_all
     end
 
-    %w[google steam].each do |strategy|
+    %w[crest].each do |strategy|
       scenario "with #{strategy}" do
         visit '/'
         click_link 'login'
-        click_link strategy
-        fill_in 'user_username', with: "banana"
-        click_button 'submit'
-
-        expect( page ).to have_content "Registration Successful"
-        expect( page ).to have_content "banana"
+        expect( page ).to have_content "Successfully authenticated"
       end
     end
   end
 
   describe 'Existing users can sign in' do
-    let!(:user) { create(:user) }
+    let!(:user) { create(:user_sicks) }
 
-    %w[google steam].each do |strategy|
+    %w[crest].each do |strategy|
       scenario "with #{strategy}" do
         visit '/'
         click_link 'login'
-        click_link strategy
 
         expect( page ).to have_content "Successfully authenticated"
-        expect( page ).to have_content user.username
+        expect( page ).to have_content user.name
       end
     end
   end
 
   context 'Signed in Users' do
-    let!(:user) { create(:user) }
+    let!(:user) { create(:user_sicks) }
 
     def log_in
       visit '/'
       click_link 'login'
-      click_link 'steam'
     end
 
-    describe 'Users with only one auth' do
+    describe 'Users with only one char' do
       before(:each) do
-        user.auths.offset(1).destroy_all
+        user.chars.offset(1).destroy_all
         log_in
       end
 
-      scenario 'cannot delete their only auth' do
-        click_link user.username
+      scenario 'cannot delete their only char' do
+        click_link user.name
         click_link 'account'
-        expect( page ).to_not have_button "delete #{user.auths.first.name} auth"
+        expect( page ).to_not have_button "delete char #{user.chars.first.name}"
       end
 
-      scenario 'can add another auth' do
-        click_link user.username
+      scenario 'can add another char' do
+        OmniAuth.config.mock_auth[:crest] = OmniAuth::AuthHash.new({
+          provider: "crest",
+          uid: 2076199677,
+          info: {
+            name: "Doctor Boki",
+            character_id: 2076199677,
+            character_owner_hash: "0ILVMUgY3CU0RSsU4I0oefUR5c4="
+          }})
+        click_link user.name
         click_link 'account'
-        click_link 'add google auth'
-        expect( page ).to have_content "New Google Auth successfully added"
+        click_link 'add char'
+        expect( page ).to have_content "Added character auth"
       end
     end
 
-    describe 'Users with more than one auth' do
+    describe 'Users with more than one char' do
       before(:each) do
-        visit '/'
-        click_link 'login'
-        click_link 'steam'
+        user.chars.create( attributes_for :crest_char )
+        log_in
       end
 
-      %w[google steam].each do |strategy|
-        scenario "can delete their #{strategy} auth" do
-          click_link user.username
-          click_link 'account'
-          click_button "delete #{strategy} auth"
-          expect( page ).to have_content "#{strategy.humanize} Auth Deleted"
-        end
+      scenario "can delete a char" do
+        click_link user.name
+        click_link 'account'
+        click_button "delete char #{user.chars.second.name}"
+        expect( page ).to have_content "#{user.chars.second.name} Deleted"
       end
     end
   end

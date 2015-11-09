@@ -1,23 +1,24 @@
 .row
   .small-12
     %h3 Edit User
-    %p= "Your username is: #{current_user.username}"
+    %p= "Your main is: #{current_user.name}"
 
 .row
   .small-12
-    %h3 Auths
-    %p= "You're authenticated via the following:"
-    - current_user.auths.each do |auth|
-      .small-3.columns
-        = icon auth.name, auth.name.humanize
-        = button_to "Delete #{auth.name.humanize} Auth", user_registration_path(auth: auth.id), method: :delete, title: "delete #{auth.name} auth" if current_user.auths.count > 1
+    %h3 Characters
 
 .row
   .small-12
-    -if current_user.auths.count < 2
-      %h3 Add Auths
-      %p You can associate a steam account, a google account, or both to manage your identity
-      - if current_user.auths.first.provider != "steam"
-        = link_to icon("steam", "Add a Steam account"), user_omniauth_authorize_path(:steam), title: "add steam auth"
-      - else
-        = link_to icon("google", "Add a Google account"), user_omniauth_authorize_path(:google_oauth2), title: "add google auth"
+    %h3 Add Auths
+    %p You can associate more characters to this account for authentication
+    = link_to icon("plus", "Add a another character to authenticate with"), user_omniauth_authorize_path(:crest), title: "add char"
+
+.row
+  - current_user.chars.each do |char|
+    .small-4.columns
+      = char.name
+    .small-4.columns
+      char corp here
+    .small-4.columns
+      = button_to "Delete #{char.name}", user_registration_path(char: char.id), method: :delete, title: "delete char #{char.name}" if current_user.chars.count > 1
+

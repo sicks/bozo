@@ -1,24 +1,40 @@
 require 'rails_helper'
 
 RSpec.describe 'Unit Tests for: app/models/user.rb', type: :model do
-  let!(:user) { create(:user) }
-  let(:auth_hash) { OmniAuth::AuthHash.new( attributes_for :steam_auth ) }
+  let!(:user) { create(:user_sicks) }
+  let(:auth_hash) { OmniAuth::AuthHash.new({
+      provider: "crest",
+      uid: 924610593,
+      info: {
+        name: "Sicks",
+        character_id: 924610593,
+        expires_on: "2015-11-09T21:43:59",
+        scopes: "",
+        token_type: "Character",
+        character_owner_hash: "5ZQrqrBJh/Yu6/mdu9GugC549K4="
+      },
+      credentials: {
+        token: "ydt7_3FQ-YtygaHd5sQ1kfwEframi_w7p4jmNaab9IWFYc4Fzs3q4jIbp8XDismmEJE_1Wc2STdzMqhvgBNQdQ2",
+        expires_at: 1447105439,
+        expires: true
+      },
+      extra: {
+        raw_info: {
+          "CharacterID"=> 924610593,
+          "CharacterName"=> "Sicks",
+          "ExpiresOn"=> "2015-11-09T21:43:59",
+          "Scopes"=> "",
+          "TokenType"=> "Character",
+          "CharacterOwnerHash"=> "5ZQrqrBJh/Yu6/mdu9GugC549K4="
+        }
+      }
+    })
+  }
 
   describe User,'validates' do
-    %w[username].each do |attribute|
-      specify "presence of #{attribute}" do
-        setter = attribute + "="
-        user.send setter.to_sym, nil
-        expect( user.valid? ).to eq false
-      end
-    end
 
-    specify "uniqueness of username" do
-      expect( user.dup.valid? ).to eq false
-    end
-
-    specify 'validity of auths' do
-      user.auths.first.provider = nil
+    specify 'validity of chars' do
+      user.chars.first.provider = nil
       expect( user.valid? ).to eq false
     end
   end
@@ -42,9 +58,18 @@ RSpec.describe 'Unit Tests for: app/models/user.rb', type: :model do
           User.destroy_all
         end
 
-        it "returns false" do
-          expect( new_user ).to eq false
+        it "returns a newly created user" do
+          expect( new_user ).to be_a( User )
+          expect( new_user.persisted? ).to eq true
         end
+      end
+    end
+
+    describe "#name" do
+      let(:name) { user.chars.first.name }
+
+      specify "returns the name of this user's first character" do
+        expect( user.name ).to eq name
       end
     end
   end

@@ -38,9 +38,8 @@ gem 'font-awesome-sass'
 # auth
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-steam'
-gem 'omniauth-google-oauth2'
-
+gem 'omniauth-crest'
+gem 'eaal'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
