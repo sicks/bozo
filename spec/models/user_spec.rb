@@ -32,7 +32,6 @@ RSpec.describe 'Unit Tests for: app/models/user.rb', type: :model do
   }
 
   describe User,'validates' do
-
     specify 'validity of chars' do
       user.chars.first.provider = nil
       expect( user.valid? ).to eq false

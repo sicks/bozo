@@ -50,14 +50,8 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
       end
 
       scenario 'can add another char' do
-        OmniAuth.config.mock_auth[:crest] = OmniAuth::AuthHash.new({
-          provider: "crest",
-          uid: 2076199677,
-          info: {
-            name: "Doctor Boki",
-            character_id: 2076199677,
-            character_owner_hash: "0ILVMUgY3CU0RSsU4I0oefUR5c4="
-          }})
+        reset_auth( :boki_auth )
+
         click_link user.name
         click_link 'account'
         click_link 'add char'
@@ -67,14 +61,14 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
 
     describe 'Users with more than one char' do
       before(:each) do
-        user.chars.create( attributes_for :crest_char )
+        user.chars.create( attributes_for :char_boki )
         log_in
       end
 
       scenario "can delete a char" do
         click_link user.name
         click_link 'account'
-        click_button "delete char #{user.chars.second.name}"
+        click_button "Delete #{user.chars.second.name}"
         expect( page ).to have_content "#{user.chars.second.name} Deleted"
       end
     end

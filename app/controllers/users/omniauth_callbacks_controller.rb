@@ -3,9 +3,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def crest
     if user_signed_in?
-      @user.chars.create( provider: auth_hash.provider.to_s,
-                         uid: auth_hash.provider.to_s,
-                         ccp_id: auth_hash.info.character_id,
+      @user.chars.create( provider: auth_hash.provider,
+                         uid: auth_hash.uid,
                          name: auth_hash.info.name,
                          owner: auth_hash.info.character_owner_hash)
       redirect_to edit_user_registration_path, notice: "Added character auth: #{auth_hash.info.name}"

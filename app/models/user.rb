@@ -11,8 +11,7 @@ class User < ActiveRecord::Base
   def self.from_omniauth( auth_hash )
     user = joins(:chars).where("chars.provider = ? AND chars.uid = ?", auth_hash.provider.to_s, auth_hash.uid.to_s).first_or_create do |u|
       char = Char.new( provider: auth_hash.provider.to_s,
-                         uid: auth_hash.provider.to_s,
-                         ccp_id: auth_hash.info.character_id,
+                         uid: auth_hash.uid.to_s,
                          name: auth_hash.info.name,
                          owner: auth_hash.info.character_owner_hash)
       u.chars << char

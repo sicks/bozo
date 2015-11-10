@@ -18,7 +18,7 @@
     .small-4.columns
       = char.name
     .small-4.columns
-      char corp here
+      = char.corp.name
     .small-4.columns
       = button_to "Delete #{char.name}", user_registration_path(char: char.id), method: :delete, title: "delete char #{char.name}" if current_user.chars.count > 1
 
