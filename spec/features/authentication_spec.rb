@@ -44,7 +44,6 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
       end
 
       scenario 'cannot delete their only char' do
-        click_link user.name
         click_link 'account'
         expect( page ).to_not have_button "delete char #{user.chars.first.name}"
       end
@@ -52,7 +51,6 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
       scenario 'can add another char' do
         reset_auth( :boki_auth )
 
-        click_link user.name
         click_link 'account'
         click_link 'add char'
         expect( page ).to have_content "Added character auth"
@@ -66,7 +64,6 @@ RSpec.describe 'Feature: User Authentication', type: :feature do
       end
 
       scenario "can delete a char" do
-        click_link user.name
         click_link 'account'
         click_button "Delete #{user.chars.second.name}"
         expect( page ).to have_content "#{user.chars.second.name} Deleted"
