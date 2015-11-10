@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_action :require_login, only: [:crest]
   before_action :get_user
 
   def crest

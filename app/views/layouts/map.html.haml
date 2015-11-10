@@ -1,0 +1,11 @@
+- content_for( :body ) do
+  .row.small-collapse
+    %main.medium-8.columns
+      .small-12.columns
+        = yield
+
+    %nav.medium-4.columns
+      = render "layouts/main_navigation"
+
+= render template: "layouts/application"
+

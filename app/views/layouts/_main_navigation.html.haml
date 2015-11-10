@@ -1,21 +1,40 @@
-%nav.top-bar{ data: { topbar: true }, role: :navigation }
-  %ul.title-area
-    %li.name
-      %h1= link_to "bozo", root_path
-    %li.toggle-topbar.menu-icon
-      = link_to "#" do
-        %span Menu
-  %section.top-bar-section
-    %ul.right
-      - if user_signed_in?
-        %li.has-dropdown
-          = link_to icon("user", current_user.name)
-          %ul.dropdown
-            %li= link_to "Account", edit_user_registration_path, title: "account"
-            %li= link_to "Log Out", destroy_user_session_path, method: :delete, title: "logout"
-      - else
-        %li
-          = link_to icon("bars", "Log In"), user_omniauth_authorize_path(:crest), title: "login"
-    %ul.left
-      %li
-        = link_to "filter", "#"
+%nav
+  %h1.text-center
+    = link_to "bozo", root_path
+  .text-center
+    = link_to icon("user", current_user.name), edit_user_registration_path, title: "account"
+    &nbsp;|&nbsp;
+    = link_to icon("sign-out", "Log Out"), destroy_user_session_path, method: :delete, title: "logout"
+
+
+  .flash
+    - flash.each do |type, message|
+      = render partial: 'layouts/flash', locals: { type: type, message: message }
+
+  - if user_signed_in?
+    %ul.accordion{ data: { accordion: true } }
+      %li.accordion-navigation
+        = link_to "Selected Item Details", "#select-detail"
+        #select-detail.content
+          selected item details
+      %li.accordion-navigation
+        = link_to "Maps", "#map-list"
+        #map-list.content
+          list of maps here
+      %li.accordion-navigation
+        = link_to "Signatures", "#sig-list"
+        #sig-list.content
+          list of signatures here
+      %li.accordion-navigation
+        = link_to "Intel", "#intel"
+        #intel.content
+          towers, corps
+      %li.accordion-navigation
+        = link_to "Node list", "#node-list"
+        #node-list.content
+          list of nodes
+      %li.accordion-navigation
+        = link_to "Edge list", "#edge-list"
+        #edge-list.content
+          list of edges
+

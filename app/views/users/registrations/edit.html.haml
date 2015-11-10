@@ -6,19 +6,17 @@
 .row
   .small-12
     %h3 Characters
-
-.row
-  .small-12
-    %h3 Add Auths
     %p You can associate more characters to this account for authentication
     = link_to icon("plus", "Add a another character to authenticate with"), user_omniauth_authorize_path(:crest), title: "add char"
 
-.row
-  - current_user.chars.each do |char|
+- current_user.chars.each do |char|
+  .row
     .small-4.columns
+      = eve_image_tag :character, char.uid, 32
       = char.name
     .small-4.columns
+      = eve_image_tag :corporation, char.corp.ccp_id, 32
       = char.corp.name
     .small-4.columns
-      = button_to "Delete #{char.name}", user_registration_path(char: char.id), method: :delete, title: "delete char #{char.name}" if current_user.chars.count > 1
+      = button_to "Delete #{char.name}", user_registration_path(char: char.id), method: :delete, title: "delete char #{char.name}", class: "button small alert" if current_user.chars.count > 1
 

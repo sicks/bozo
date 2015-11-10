@@ -4,17 +4,12 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    %title= content_for?(:title) ? yield(:title) : "bozo"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = render "layouts/main_navigation"
-    .flash
-      - flash.each do |type, message|
-        = render partial: 'layouts/flash', locals: { type: type, message: message }
 
-    %main.row
-      .small-12.columns
-        = yield
+    = content_for?(:body) ? yield(:body) : yield
+
