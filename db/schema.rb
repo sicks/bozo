@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110071550) do
+ActiveRecord::Schema.define(version: 20151110224812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,50 @@ ActiveRecord::Schema.define(version: 20151110071550) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "holes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "destination"
+    t.boolean  "regen"
+    t.integer  "lifespan"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mass",        limit: 8
+    t.integer  "jumpable",    limit: 8
+    t.boolean  "static"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.integer  "corp_id"
+    t.string   "title"
+    t.integer  "home_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "system_bonus", force: :cascade do |t|
+    t.integer  "ccp_id"
+    t.string   "anomaly"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "system_jumps", force: :cascade do |t|
+    t.integer  "from_ccp_id"
+    t.integer  "to_ccp_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "systems", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "ccp_id"
+    t.float    "sec_status"
+    t.integer  "system_class"
+    t.string   "region"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",       default: 0, null: false
@@ -44,6 +88,15 @@ ActiveRecord::Schema.define(version: 20151110071550) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+  end
+
+  create_table "wormhole_effects", force: :cascade do |t|
+    t.float    "modifier"
+    t.string   "affected"
+    t.string   "anomaly"
+    t.integer  "system_class"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

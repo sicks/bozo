@@ -1,0 +1,31 @@
+modifier,affected,anomaly,system_class
+1.30,"Shield HP Bonus","Pulsar",1
+1.44,"Shield HP Bonus","Pulsar",2
+1.58,"Shield HP Bonus","Pulsar",3
+1.72,"Shield HP Bonus","Pulsar",4
+1.86,"Shield HP Bonus","Pulsar",5
+2.00,"Shield HP Bonus","Pulsar",6
+1.30,"Nos/Neut Amount Bonus","Pulsar",1
+1.44,"Nos/Neut Amount Bonus","Pulsar",2
+1.58,"Nos/Neut Amount Bonus","Pulsar",3
+1.72,"Nos/Neut Amount Bonus","Pulsar",4
+1.86,"Nos/Neut Amount Bonus","Pulsar",5
+2.00,"Nos/Neut Amount Bonus","Pulsar",6
+1.30,"Signature Radius Penalty","Pulsar",1
+1.44,"Signature Radius Penalty","Pulsar",2
+1.58,"Signature Radius Penalty","Pulsar",3
+1.72,"Signature Radius Penalty","Pulsar",4
+1.86,"Signature Radius Penalty","Pulsar",5
+2.00,"Signature Radius Penalty","Pulsar",6
+0.85,"Armor Resistance Penalty","Pulsar",1
+0.78,"Armor Resistance Penalty","Pulsar",2
+0.71,"Armor Resistance Penalty","Pulsar",3
+0.64,"Armor Resistance Penalty","Pulsar",4
+0.57,"Armor Resistance Penalty","Pulsar",5
+0.50,"Armor Resistance Penalty","Pulsar",6
+0.85,"Cap Recharge Time Bonus","Pulsar",1
+0.78,"Cap Recharge Time Bonus","Pulsar",2
+0.71,"Cap Recharge Time Bonus","Pulsar",3
+0.64,"Cap Recharge Time Bonus","Pulsar",4
+0.57,"Cap Recharge Time Bonus","Pulsar",5
+0.50,"Cap Recharge Time Bonus","Pulsar",6

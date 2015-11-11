@@ -1,0 +1,43 @@
+modifier,affected,anomaly,system_class
+0.85,"Local Armor Repair Penalty","Cataclysmic Variable",1
+0.78,"Local Armor Repair Penalty","Cataclysmic Variable",2
+0.71,"Local Armor Repair Penalty","Cataclysmic Variable",3
+0.64,"Local Armor Repair Penalty","Cataclysmic Variable",4
+0.57,"Local Armor Repair Penalty","Cataclysmic Variable",5
+0.50,"Local Armor Repair Penalty","Cataclysmic Variable",6
+0.85,"Local Shield Repair Penalty","Cataclysmic Variable",1
+0.78,"Local Shield Repair Penalty","Cataclysmic Variable",2
+0.71,"Local Shield Repair Penalty","Cataclysmic Variable",3
+0.64,"Local Shield Repair Penalty","Cataclysmic Variable",4
+0.57,"Local Shield Repair Penalty","Cataclysmic Variable",5
+0.50,"Local Shield Repair Penalty","Cataclysmic Variable",6
+1.30,"Remote Shield Repair Bonus","Cataclysmic Variable",1
+1.44,"Remote Shield Repair Bonus","Cataclysmic Variable",2
+1.58,"Remote Shield Repair Bonus","Cataclysmic Variable",3
+1.72,"Remote Shield Repair Bonus","Cataclysmic Variable",4
+1.86,"Remote Shield Repair Bonus","Cataclysmic Variable",5
+2.00,"Remote Shield Repair Bonus","Cataclysmic Variable",6
+1.30,"Remote Armor Repair Bonus","Cataclysmic Variable",1
+1.44,"Remote Armor Repair Bonus","Cataclysmic Variable",2
+1.58,"Remote Armor Repair Bonus","Cataclysmic Variable",3
+1.72,"Remote Armor Repair Bonus","Cataclysmic Variable",4
+1.86,"Remote Armor Repair Bonus","Cataclysmic Variable",5
+2.00,"Remote Armor Repair Bonus","Cataclysmic Variable",6
+1.30,"Cap Capacity Bonus","Cataclysmic Variable",1
+1.44,"Cap Capacity Bonus","Cataclysmic Variable",2
+1.58,"Cap Capacity Bonus","Cataclysmic Variable",3
+1.72,"Cap Capacity Bonus","Cataclysmic Variable",4
+1.86,"Cap Capacity Bonus","Cataclysmic Variable",5
+2.00,"Cap Capacity Bonus","Cataclysmic Variable",6
+1.15,"Cap Recharge Time Penalty","Cataclysmic Variable",1
+1.22,"Cap Recharge Time Penalty","Cataclysmic Variable",2
+1.29,"Cap Recharge Time Penalty","Cataclysmic Variable",3
+1.36,"Cap Recharge Time Penalty","Cataclysmic Variable",4
+1.43,"Cap Recharge Time Penalty","Cataclysmic Variable",5
+1.50,"Cap Recharge Time Penalty","Cataclysmic Variable",6
+0.85,"Cap Transfer Amount Penalty","Cataclysmic Variable",1
+0.78,"Cap Transfer Amount Penalty","Cataclysmic Variable",2
+0.71,"Cap Transfer Amount Penalty","Cataclysmic Variable",3
+0.64,"Cap Transfer Amount Penalty","Cataclysmic Variable",4
+0.57,"Cap Transfer Amount Penalty","Cataclysmic Variable",5
+0.50,"Cap Transfer Amount Penalty","Cataclysmic Variable",6

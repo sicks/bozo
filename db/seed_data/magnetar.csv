@@ -1,0 +1,37 @@
+modifier,affected,anomaly,system_class
+0.85,"Targeting Range Penalty","Magnetar",1
+0.78,"Targeting Range Penalty","Magnetar",2
+0.71,"Targeting Range Penalty","Magnetar",3
+0.64,"Targeting Range Penalty","Magnetar",4
+0.57,"Targeting Range Penalty","Magnetar",5
+0.50,"Targeting Range Penalty","Magnetar",6
+0.85,"Tracking Speed Penalty","Magnetar",1
+0.78,"Tracking Speed Penalty","Magnetar",2
+0.71,"Tracking Speed Penalty","Magnetar",3
+0.64,"Tracking Speed Penalty","Magnetar",4
+0.57,"Tracking Speed Penalty","Magnetar",5
+0.50,"Tracking Speed Penalty","Magnetar",6
+1.30,"Damage Bonus","Magnetar",1
+1.44,"Damage Bonus","Magnetar",2
+1.58,"Damage Bonus","Magnetar",3
+1.72,"Damage Bonus","Magnetar",4
+1.86,"Damage Bonus","Magnetar",5
+2.00,"Damage Bonus","Magnetar",6
+1.15,"Missile Explosion Radius Penalty","Magnetar",1
+1.22,"Missile Explosion Radius Penalty","Magnetar",2
+1.29,"Missile Explosion Radius Penalty","Magnetar",3
+1.36,"Missile Explosion Radius Penalty","Magnetar",4
+1.43,"Missile Explosion Radius Penalty","Magnetar",5
+1.50,"Missile Explosion Radius Penalty","Magnetar",6
+0.85,"Drone Tracking Penalty","Magnetar",1
+0.78,"Drone Tracking Penalty","Magnetar",2
+0.71,"Drone Tracking Penalty","Magnetar",3
+0.64,"Drone Tracking Penalty","Magnetar",4
+0.57,"Drone Tracking Penalty","Magnetar",5
+0.50,"Drone Tracking Penalty","Magnetar",6
+0.85,"Target Painter Strength Penalty","Magnetar",1
+0.78,"Target Painter Strength Penalty","Magnetar",2
+0.71,"Target Painter Strength Penalty","Magnetar",3
+0.64,"Target Painter Strength Penalty","Magnetar",4
+0.57,"Target Painter Strength Penalty","Magnetar",5
+0.50,"Target Painter Strength Penalty","Magnetar",6

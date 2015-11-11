@@ -1,0 +1,31 @@
+modifier,affected,anomaly,system_class
+1.15,"Heat Damage Penalty","Red Giant",1
+1.22,"Heat Damage Penalty","Red Giant",2
+1.29,"Heat Damage Penalty","Red Giant",3
+1.36,"Heat Damage Penalty","Red Giant",4
+1.43,"Heat Damage Penalty","Red Giant",5
+1.50,"Heat Damage Penalty","Red Giant",6
+1.30,"Overload Effect Bonus","Red Giant",1
+1.44,"Overload Effect Bonus","Red Giant",2
+1.58,"Overload Effect Bonus","Red Giant",3
+1.72,"Overload Effect Bonus","Red Giant",4
+1.86,"Overload Effect Bonus","Red Giant",5
+2.00,"Overload Effect Bonus","Red Giant",6
+1.30,"Smart Bomb Range Bonus","Red Giant",1
+1.44,"Smart Bomb Range Bonus","Red Giant",2
+1.58,"Smart Bomb Range Bonus","Red Giant",3
+1.72,"Smart Bomb Range Bonus","Red Giant",4
+1.86,"Smart Bomb Range Bonus","Red Giant",5
+2.00,"Smart Bomb Range Bonus","Red Giant",6
+1.30,"Smart Bomb Damage Bonus","Red Giant",1
+1.44,"Smart Bomb Damage Bonus","Red Giant",2
+1.58,"Smart Bomb Damage Bonus","Red Giant",3
+1.72,"Smart Bomb Damage Bonus","Red Giant",4
+1.86,"Smart Bomb Damage Bonus","Red Giant",5
+2.00,"Smart Bomb Damage Bonus","Red Giant",6
+1.30,"Bomb Damage Bonus","Red Giant",1
+1.44,"Bomb Damage Bonus","Red Giant",2
+1.58,"Bomb Damage Bonus","Red Giant",3
+1.72,"Bomb Damage Bonus","Red Giant",4
+1.86,"Bomb Damage Bonus","Red Giant",5
+2.00,"Bomb Damage Bonus","Red Giant",6

@@ -1,0 +1,37 @@
+modifier,affected,anomaly,system_class
+1.15,"Ship Inertia Penalty","Black Hole",1
+1.44,"Ship Inertia Penalty","Black Hole",2
+1.55,"Ship Inertia Penalty","Black Hole",3
+1.68,"Ship Inertia Penalty","Black Hole",4
+1.85,"Ship Inertia Penalty","Black Hole",5
+2.00,"Ship Inertia Penalty","Black Hole",6
+0.85,"Webifier Strength Penalty","Black Hole",1
+0.78,"Webifier Strength Penalty","Black Hole",2
+0.71,"Webifier Strength Penalty","Black Hole",3
+0.64,"Webifier Strength Penalty","Black Hole",4
+0.57,"Webifier Strength Penalty","Black Hole",5
+0.50,"Webifier Strength Penalty","Black Hole",6
+1.30,"Explosion Velocity Bonus","Black Hole",1
+1.44,"Explosion Velocity Bonus","Black Hole",2
+1.58,"Explosion Velocity Bonus","Black Hole",3
+1.72,"Explosion Velocity Bonus","Black Hole",4
+1.86,"Explosion Velocity Bonus","Black Hole",5
+2.00,"Explosion Velocity Bonus","Black Hole",6
+1.15,"Missile Velocity Bonus","Black Hole",1
+1.22,"Missile Velocity Bonus","Black Hole",2
+1.29,"Missile Velocity Bonus","Black Hole",3
+1.36,"Missile Velocity Bonus","Black Hole",4
+1.43,"Missile Velocity Bonus","Black Hole",5
+1.50,"Missile Velocity Bonus","Black Hole",6
+1.30,"Ship Velocity","Black Hole",1
+1.44,"Ship Velocity","Black Hole",2
+1.58,"Ship Velocity","Black Hole",3
+1.72,"Ship Velocity","Black Hole",4
+1.86,"Ship Velocity","Black Hole",5
+2.00,"Ship Velocity","Black Hole",6
+1.30,"Targeting Range Bonus","Black Hole",1
+1.44,"Targeting Range Bonus","Black Hole",2
+1.58,"Targeting Range Bonus","Black Hole",3
+1.72,"Targeting Range Bonus","Black Hole",4
+1.86,"Targeting Range Bonus","Black Hole",5
+2.00,"Targeting Range Bonus","Black Hole",6
