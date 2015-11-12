@@ -71,5 +71,19 @@ RSpec.describe 'Unit Tests for: app/models/user.rb', type: :model do
         expect( user.name ).to eq name
       end
     end
+
+    describe "#corps" do
+      let(:corps) { user.corps }
+
+      it "returns an activerecord relation" do
+        expect( corps ).to be_a( ActiveRecord::Relation )
+      end
+
+      specify "filled with corps" do
+        corps.each do |corp|
+          expect( corp ).to be_a( Corp )
+        end
+      end
+    end
   end
 end

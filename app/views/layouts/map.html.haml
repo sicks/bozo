@@ -1,11 +1,33 @@
 - content_for( :body ) do
-  .row.small-collapse
-    %main.medium-8.columns
-      .small-12.columns
-        = yield
+  %nav.medium-4.right
+    = render "layouts/header"
 
-    %nav.medium-4.columns
-      = render "layouts/main_navigation"
+    .small-12
+      %ul.accordion{ data: { accordion: true } }
+        %li.accordion-navigation
+          = link_to "Selected Item Details", "#select-detail"
+          #select-detail.content
+            selected item details
+        %li.accordion-navigation
+          = link_to "Signatures", "#sig-list"
+          #sig-list.content
+            list of signatures here
+        %li.accordion-navigation
+          = link_to "Intel", "#intel"
+          #intel.content
+            towers, corps
+        %li.accordion-navigation
+          = link_to "Node list", "#node-list"
+          #node-list.content
+            list of nodes
+        %li.accordion-navigation
+          = link_to "Edge list", "#edge-list"
+          #edge-list.content
+            list of edges
+
+
+  %main.medium-8.left
+    = yield
 
 = render template: "layouts/application"
 

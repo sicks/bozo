@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
   def name
     self.chars.any? ? self.chars.first.name : "raaaaaaaaaaaaaaaandy"
   end
+
+  def corps
+    ids = []
+    chars.each do |char|
+      ids << char.corp.id
+    end
+    Corp.where(id: ids )
+  end
 end

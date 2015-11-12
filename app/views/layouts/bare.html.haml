@@ -1,4 +1,9 @@
 - content_for :body do
-  = yield
+  .row
+    .small-12.columns
+      = render "layouts/header"
+  .row
+    .small-12.columns
+      = yield
 
 = render template: "layouts/application"

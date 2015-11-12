@@ -1,10 +1,10 @@
 .row
-  .small-12
+  .small-12.columns
     %h3 Edit User
     %p= "Your main is: #{current_user.name}"
 
 .row
-  .small-12
+  .small-12.columns
     %h3 Characters
     %p You can associate more characters to this account for authentication
     = link_to icon("plus", "Add a another character to authenticate with"), user_omniauth_authorize_path(:crest), title: "add char"

@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     match 'sign_out', to: 'users/sessions#destroy', as: :destroy_user_session, via: [:get, :delete]
   end
 
-  root to: "maps#show"
+  root to: "maps#index"
 end

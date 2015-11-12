@@ -1,0 +1,23 @@
+.row
+  %header.medium-6.small-centered.columns
+    %h2 New Map
+.row
+  .medium-6.small-centered.columns
+    = form_for @map do |f|
+      - if @map.errors.any?
+        #error_explanation
+          %h3= pluralize(@map.errors.count, "error") + " prohibited this post from being saved:"
+          %ul
+            - @map.errors.full_messages.each do |message|
+              %li= message
+
+      = f.label :title
+      = f.text_field :title
+
+      = f.label :corp_id
+      = f.select :corp_id, current_user.corps.collect{ |c| [ c.name, c.id ] }, include_blank: true
+
+      = f.label :home, "Home System"
+      = f.text_field :home
+
+      = f.submit class: "button"

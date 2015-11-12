@@ -1,0 +1,13 @@
+.row
+  %header.medium-6.small-centered.columns
+    %h2 Map List
+    = link_to icon("plus", "new map"), new_map_path
+
+.row
+  - current_user.corps.each do |corp|
+    .medium-6.columns.small-centered
+      %h6= corp.name
+      %ul
+        - corp.maps.each do |map|
+          %li= link_to map.title, map
+

@@ -1,0 +1,13 @@
+%header.clearfix
+  %h1.text-center
+    = link_to "bozo", root_path
+
+  - if user_signed_in?
+    .small-12.columns
+      = link_to icon("user", current_user.name), edit_user_registration_path, title: "account"
+      = link_to icon("sign-out", "Log Out"), destroy_user_session_path, method: :delete, title: "logout", class: "right"
+
+.flash
+  - flash.each do |type, message|
+    = render partial: 'layouts/flash', locals: { type: type, message: message }
+

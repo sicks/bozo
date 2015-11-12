@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout "map"
+  layout "bare"
 
   def edit
     @user = current_user
