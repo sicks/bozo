@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Code Regular';
+    src: font-url('Code_Pro_Demo-webfont.eot');
+    src: font-url('Code_Pro_Demo-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('Code_Pro_Demo-webfont.woff2') format('woff2'),
+         font-url('Code_Pro_Demo-webfont.woff') format('woff'),
+         font-url('Code_Pro_Demo-webfont.ttf') format('truetype'),
+         font-url('Code_Pro_Demo-webfont.svg#code_pro_demoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Code Light';
+    src: font-url('Code_Pro_Light_Demo-webfont.eot');
+    src: font-url('Code_Pro_Light_Demo-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('Code_Pro_Light_Demo-webfont.woff2') format('woff2'),
+         font-url('Code_Pro_Light_Demo-webfont.woff') format('woff'),
+         font-url('Code_Pro_Light_Demo-webfont.ttf') format('truetype'),
+         font-url('Code_Pro_Light_Demo-webfont.svg#code_pro_light_demoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
