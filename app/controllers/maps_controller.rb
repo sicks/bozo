@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  before_action :get_map, only: [:show, :edit, :update, :destroy]
   layout "map"
 
   def new
@@ -22,7 +23,8 @@ class MapsController < ApplicationController
   end
 
   def show
-
+    gon.nodes = []
+    gon.nodes << @map.home_node
   end
 
   def edit
@@ -40,5 +42,10 @@ class MapsController < ApplicationController
   private
   def map_params
     params.require(:map).permit(:title, :corp_id, :home_id)
+  end
+
+  def get_map
+    corps = current_user.corps.pluck(:id)
+    @map = Map.where(corp_id: corps).find( params[:id] )
   end
 end

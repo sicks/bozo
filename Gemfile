@@ -34,6 +34,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
+gem 'visjs-rails'
+gem 'gon'
 
 # auth
 gem 'devise'

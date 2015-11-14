@@ -24,5 +24,7 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
 //= require turbolinks
+//= require vis
+//= require maps
 //= require main
 
