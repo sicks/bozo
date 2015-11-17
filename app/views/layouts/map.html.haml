@@ -2,6 +2,8 @@
   %nav.medium-4.right
     = render "layouts/header"
 
+    = link_to icon("plus","new connection"), new_connection_path(@map)
+
     .small-12
       %ul.accordion{ data: { accordion: true } }
         %li.accordion-navigation

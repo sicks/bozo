@@ -1,0 +1,26 @@
+= form_for([@map, @connection], url: connections_path(@map, @connection)) do |f|
+  - if @map.errors.any?
+    #error_explanation
+      %h2= pluralize(@map.errors.count, "error") + " prohibited this map from being saved:"
+      %ul
+        -@map.errors.full_messages.each do |message|
+          %li= message
+
+  = f.label :from
+  = f.text_field :from
+
+  = f.label :to
+  = f.text_field :to
+
+  = f.label :hole
+  = f.select :hole_id, options_from_collection_for_select(Hole.all, :id, :name)
+
+  .row
+    .small-6.columns
+      = f.label :eol?
+      = f.check_box :eol
+    .small-6.columns
+      = f.label :stage
+      = f.select :stage, options_for_select([["fresh", 1],["half", 2],["crit",3]])
+
+  = f.submit class: "button"

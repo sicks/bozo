@@ -23,8 +23,8 @@ class MapsController < ApplicationController
   end
 
   def show
-    gon.nodes = []
-    gon.nodes << @map.home_node
+    gon.nodes = @map.nodes
+    gon.edges = @map.edges
   end
 
   def edit
