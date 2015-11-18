@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   resources :maps do
-    member do
-      resources :connections
-    end
+    resources :connections
   end
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations", sessions: "users/sessions" }
   devise_scope :user do

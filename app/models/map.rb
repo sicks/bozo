@@ -8,11 +8,16 @@ class Map < ActiveRecord::Base
   validates :home, inclusion: { in: System.all, message: "must be a system that exists" }
   validates_associated :connections
 
+  def home_node
+    { id: home.id, label: title, shape: 'circularImage', image: corp.image_url(128), size: 40, mass: 1 }
+  end
+
   def nodes
     list = []
+    list << home_node
     connections.each do |c|
-      list << c.from.node
-      list << c.to.node
+      list << c.from.node if c.from != home
+      list << c.to.node if c.to != home
     end
     list.uniq
   end
@@ -23,5 +28,14 @@ class Map < ActiveRecord::Base
       list << c.edge
     end
     list.uniq
+  end
+
+  def systems
+    list = []
+    connections.each do |c|
+      list << c.from_id
+      list << c.to_id
+    end
+    System.where(id: list)
   end
 end

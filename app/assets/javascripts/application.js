@@ -26,5 +26,6 @@
 //= require turbolinks
 //= require vis
 //= require maps
+//= require connections
 //= require main
 

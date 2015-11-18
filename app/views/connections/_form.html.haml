@@ -1,26 +1,36 @@
-= form_for([@map, @connection], url: connections_path(@map, @connection)) do |f|
-  - if @map.errors.any?
-    #error_explanation
-      %h2= pluralize(@map.errors.count, "error") + " prohibited this map from being saved:"
-      %ul
-        -@map.errors.full_messages.each do |message|
-          %li= message
+= content_tag_for(:div, connection, class: "content") do
+  = form_for([map, connection]) do |f|
+    - if map.errors.any?
+      #error_explanation
+        %h2= pluralize(map.errors.count, "error") + " prohibited this map from being saved:"
+        %ul
+          -map.errors.full_messages.each do |message|
+            %li= message
 
-  = f.label :from
-  = f.text_field :from
+    .row
+      .small-5.columns
+        = f.label :from
+        = f.text_field :from, value: (connection.persisted? ? connection.from.name : "" )
+      .small-2.columns.text-center
+        = f.label :switch
+        = link_to icon("refresh"), "#", class: "button swap", data: { connection: connection.id }
+      .small-5.columns
+        = f.label :to
+        = f.text_field :to, value: (connection.persisted? ? connection.to.name : "" )
+    .row
+      .small-5.columns
+        = f.label :hole
+        = f.select :hole_id, options_from_collection_for_select(Hole.all, :id, :name, connection.hole_id)
+      .small-2.columns.text-center
+        = f.label :eol?
+        = f.check_box :eol
+      .small-5.columns
+        = f.label :stage, "Mass"
+        = f.select :stage, options_for_select([["fresh", 1],["half", 2],["crit",3]], connection.stage )
 
-  = f.label :to
-  = f.text_field :to
-
-  = f.label :hole
-  = f.select :hole_id, options_from_collection_for_select(Hole.all, :id, :name)
-
-  .row
-    .small-6.columns
-      = f.label :eol?
-      = f.check_box :eol
-    .small-6.columns
-      = f.label :stage
-      = f.select :stage, options_for_select([["fresh", 1],["half", 2],["crit",3]])
-
-  = f.submit class: "button"
+    .row
+      .small-6.columns
+        = f.submit class: "button"
+      - if connection.persisted?
+        .small-6.columns.text-right
+          = link_to "Delete Connection", map_connection_path(map, connection), method: :delete, class: "button alert"

@@ -3,4 +3,4 @@
     %h2 New Connection
 .row
   .medium-6.columns.small-centered
-    = render "connections/form"
+    = render partial: "form", locals: { map: @map, connection: @connection } 

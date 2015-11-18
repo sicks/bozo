@@ -1,3 +1,10 @@
 // Place all the styles related to the connections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.edit_connection, .new_connection {
+  input[type='checkbox'] {
+    width: 1.35rem;
+    height: 1.35rem;
+    margin-top: 0.15rem;
+  }
+}

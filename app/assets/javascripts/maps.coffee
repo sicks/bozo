@@ -11,7 +11,11 @@ class MapView
       edges: new vis.DataSet( gon.edges )
 
     @options =
+      layout:
+        randomSeed: gon.seed
       nodes:
+        font:
+          color: '#EFEFEF'
         mass: 1
         scaling:
           min: 1
@@ -32,24 +36,32 @@ class MapView
           color: '#F9F9F9'
           strokeWidth: 0
           align: 'top'
+      interaction:
+        hoverConnectedEdges: false
+        selectConnectedEdges: false
       physics:
         barnesHut:
           gravitationalConstant: -5000
           centralGravity: 0.1
           springConstant: 0.1
-          springLength: 100
-          damping: 0.9
+          springLength: 25
+          damping: 1
           avoidOverlap: 0.9
-        minVelocity: 1
+        minVelocity: 2
 
-    @network = new vis.Network(@container, @data, @options)
-
-  draw: ()=>
-    setTimeout @network.redraw(), 0
+  network: ()=>
+    @net ?= new vis.Network(@container, @data, @options)
+    @net.on 'click', (e)=>
+      if e.nodes.length == 0 && e.edges.length == 1
+        @selectedItem("connection",  e.edges[0] )
+      else if e.nodes.length == 1 && e.edges.length == 0
+        @selectedItem("system", e.nodes[0] )
+  selectedItem: ( type, id )->
+    $(".selected-item .content").removeClass("active")
+    $("##{type}_#{id}").addClass("active")
 
 $(document).on 'page:change', ()->
   if typeof $("#map")[0] != 'undefined'
-    if typeof window.mapview == 'undefined'
-      window.mapview = new MapView
-    window.mapview.draw()
+    window.mapview = new MapView
+    window.mapview.network()
 

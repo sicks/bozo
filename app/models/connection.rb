@@ -26,11 +26,11 @@ class Connection < ActiveRecord::Base
   def color
     case stage
     when 1
-      "#6CB662"
+      "#5EBC41"
     when 2
-      "#FFDD8B"
+      "#BBB628"
     when 3
-      "#F85156"
+      "#BB2828"
     end
   end
 

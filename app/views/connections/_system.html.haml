@@ -1,0 +1,10 @@
+= content_tag_for(:div, system, class: "content") do
+  .row
+    .small-6.columns
+      = system.name
+    .small-6.columns
+      = system.human_class
+      = " " << system.system_bonus.anomaly unless system.system_bonus.nil?
+  .row
+    .small-12.columns
+      signatures?

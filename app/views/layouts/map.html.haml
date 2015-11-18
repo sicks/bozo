@@ -2,31 +2,13 @@
   %nav.medium-4.right
     = render "layouts/header"
 
-    = link_to icon("plus","new connection"), new_connection_path(@map)
+    .tabs-content.selected-item
+      - if @map
+        = render partial: "connections/form", collection: @map.connections, as: :connection, locals: { map: @map }
+        = render partial: "connections/system", collection: @map.systems, as: :system, locals: { map: @map }
 
-    .small-12
-      %ul.accordion{ data: { accordion: true } }
-        %li.accordion-navigation
-          = link_to "Selected Item Details", "#select-detail"
-          #select-detail.content
-            selected item details
-        %li.accordion-navigation
-          = link_to "Signatures", "#sig-list"
-          #sig-list.content
-            list of signatures here
-        %li.accordion-navigation
-          = link_to "Intel", "#intel"
-          #intel.content
-            towers, corps
-        %li.accordion-navigation
-          = link_to "Node list", "#node-list"
-          #node-list.content
-            list of nodes
-        %li.accordion-navigation
-          = link_to "Edge list", "#edge-list"
-          #edge-list.content
-            list of edges
-
+    - if @map
+      = link_to icon("plus","new connection"), new_map_connection_path(@map)
 
   %main.medium-8.left
     = yield
