@@ -60,3 +60,4 @@ group :development, :test do
   gem 'capybara'
 end
 
+gem 'quiet_assets', group: :development
