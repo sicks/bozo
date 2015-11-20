@@ -3,16 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 class MapView
-  constructor: ()->
+  constructor: ( nodes, edges, @layout )->
     @container = $("#map")[0]
 
     @data =
-      nodes: new vis.DataSet( gon.nodes )
-      edges: new vis.DataSet( gon.edges )
+      nodes: new vis.DataSet( nodes )
+      edges: new vis.DataSet( edges )
 
     @options =
-      layout:
-        randomSeed: gon.seed
       nodes:
         font:
           color: '#EFEFEF'
@@ -49,19 +47,42 @@ class MapView
           avoidOverlap: 0.9
         minVelocity: 2
 
-  network: ()=>
-    @net ?= new vis.Network(@container, @data, @options)
-    @net.on 'click', (e)=>
-      if e.nodes.length == 0 && e.edges.length == 1
-        @selectedItem("connection",  e.edges[0] )
-      else if e.nodes.length == 1 && e.edges.length == 0
-        @selectedItem("system", e.nodes[0] )
+    @network = new vis.Network(@container, @data, @options)
+    @bindEvents()
+    @applyLayout( @layout, 10 )
+
+  bindEvents: ()=>
+    @network.on 'selectEdge', (e)=>
+      @selectedItem("connection",  e.edges[0] )
+    @network.on 'selectNode', (e)=>
+      @selectedItem("system", e.nodes[0] )
+    $(document).on 'click', '#seed', (e)=>
+      @saveLayout( @network.getPositions(), $(e.target).data("map") )
+      e.preventDefault()
+
   selectedItem: ( type, id )->
     $(".selected-item .content").removeClass("active")
     $("##{type}_#{id}").addClass("active")
 
+  saveLayout: ( positions, map_id )->
+    $.ajax
+      url: "/maps/#{map_id}"
+      type: "PUT"
+      data: { id: map_id, map: { layout: JSON.stringify(positions) } }
+      dataType: "json"
+      success: (resp)->
+        console.dir(resp)
+
+  applyLayout: ( positions, i )=>
+    for nodeId, coords of positions
+      @network.moveNode( nodeId, coords.x, coords.y )
+    @network.stabilize()
+    if i > 0
+      setTimeout ()=>
+          @applyLayout( positions, i -= 1 )
+        , 0
+
 $(document).on 'page:change', ()->
   if typeof $("#map")[0] != 'undefined'
-    window.mapview = new MapView
-    window.mapview.network()
+    window.mapview = new MapView( gon.nodes, gon.edges, gon.layout )
 

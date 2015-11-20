@@ -19,4 +19,11 @@
 }
 .mapwrap {
   @include aspect-ratio(1, 1);
+
+  #seed {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+  }
 }

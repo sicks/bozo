@@ -1,4 +1,6 @@
 class Map < ActiveRecord::Base
+  default_scope { includes(:connections) }
+  serialize :layout
   belongs_to :corp
   belongs_to :home, class_name: "System", foreign_key: "home_id"
   has_many :connections
@@ -37,5 +39,9 @@ class Map < ActiveRecord::Base
       list << c.to_id
     end
     System.where(id: list)
+  end
+
+  def layout
+    JSON.parse( read_attribute(:layout) )
   end
 end

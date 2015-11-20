@@ -34,7 +34,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'foundation-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'visjs-rails'
+gem 'visjs-rails', path: "/home/sicks/dg3n.net/forks/visjs-rails"
 gem 'gon'
 
 # auth

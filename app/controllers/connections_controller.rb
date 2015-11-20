@@ -24,10 +24,6 @@ class ConnectionsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def update
     params[:connection][:from_id] = System.find_by(name: params[:connection][:from]).id
     params[:connection][:to_id] = System.find_by(name: params[:connection][:to]).id
@@ -37,9 +33,9 @@ class ConnectionsController < ApplicationController
     respond_to do |format|
       if @map.connections.find(params[:id]).update( connection_params )
         format.html { redirect_to @map, notice: 'Connection Updated.' }
-        format.json { render :show, status: :created, location: @map }
+        format.json { render json: @map, status: :ok }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @map.errors, status: :unprocessable_entity }
       end
     end
