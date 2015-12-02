@@ -7,16 +7,22 @@ class ConnectionsController < ApplicationController
   end
 
   def create
-    params[:connection][:from_id] = System.find_by(name: params[:connection][:from]).id
-    params[:connection][:to_id] = System.find_by(name: params[:connection][:to]).id
-    @map.errors.add(:from, "must be a system") if params[:from_id].nil?
-    @map.errors.add(:to, "must be a system") if params[:to_id].nil?
-
-    @map.connections.build( connection_params )
+    if request.xhr?
+      params[:connection] = {}
+      params[:connection][:hole_id] = Hole.first.id
+      params[:connection][:from_id] = System.find_by(name: params[:from]).id
+      params[:connection][:to_id] = System.find_by(name: params[:to]).id
+    else
+      params[:connection][:from_id] = System.find_by(name: params[:connection][:from]).id
+      params[:connection][:to_id] = System.find_by(name: params[:connection][:to]).id
+      @map.errors.add(:from, "must be a system") if params[:from_id].nil?
+      @map.errors.add(:to, "must be a system") if params[:to_id].nil?
+    end
+    @conn = @map.connections.build( connection_params )
     respond_to do |format|
-      if @map.save
+      if @conn.save
         format.html { redirect_to @map, notice: 'Connection Added.' }
-        format.json { render :show, status: :created, location: @map }
+        format.json { render json: @map, status: :created }
       else
         format.html { render :new }
         format.json { render json: @map.errors, status: :unprocessable_entity }

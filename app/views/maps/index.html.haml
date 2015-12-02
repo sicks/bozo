@@ -9,5 +9,7 @@
       %h6= corp.name
       %ul
         - @maps.where(corp: corp).each do |map|
-          %li= link_to map.title, map
+          %li
+            = link_to map.title, map
+            = link_to "Track", track_map_path(map), class: "right"
 

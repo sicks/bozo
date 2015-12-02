@@ -57,8 +57,9 @@ class MapView
     @network.on 'selectNode', (e)=>
       @selectedItem("system", e.nodes[0] )
     $(document).on 'click', '#seed', (e)=>
-      @saveLayout( @network.getPositions(), $(e.target).data("map") )
+      @saveLayout( @network.getPositions(), gon.map.id )
       e.preventDefault()
+    @update( gon.map.id )
 
   selectedItem: ( type, id )->
     $(".selected-item .content").removeClass("active")
@@ -82,7 +83,43 @@ class MapView
           @applyLayout( positions, i -= 1 )
         , 0
 
+  update: ( map_id )=>
+    window.poll = setTimeout ()=>
+        $.ajax
+          url: "/maps/#{map_id}.json"
+          dataType: "json"
+          success: (data)=>
+            if data.updated_at > gon.map.version
+              Turbolinks.visit("/maps/#{map_id}")
+            @update( map_id )
+      , 10000
+
+track = ( map_id )->
+  $.ajax
+    url: "/maps/#{map_id}/track.json"
+    dataType: 'json'
+    success: (data) ->
+      if gon.data.system.ccp_id != data.system.ccp_id
+        $.ajax
+          url: "/maps/#{map_id}/connections"
+          type: 'POST'
+          dataType: 'json'
+          data:
+            from: gon.data.system.name
+            to: data.system.name
+        Turbolinks.visit "/maps/#{map_id}/track"
+      return
+  return
+
+
+
 $(document).on 'page:change', ()->
+  clearTimeout( window.poll )
   if typeof $("#map")[0] != 'undefined'
     window.mapview = new MapView( gon.nodes, gon.edges, gon.layout )
+  if typeof $("#igb")[0] != 'undefined'
+    do ->
+      track( gon.map.id )
+      window.poll = setTimeout(arguments.callee, 10000)
+      return
 

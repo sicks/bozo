@@ -1,0 +1,20 @@
+.row
+  %header.small-6.columns.small-centered
+    %h2 Tracking Location!
+    %h6= @map.title
+
+.row
+  .small-6.columns.small-centered
+    - if request.headers.env["HTTP_EVE_TRUSTED"] == "Yes"
+      #igb
+        IGB data:
+        %pre= preserve( JSON.pretty_generate(@igb_data) )
+    - else
+      :javascript
+        $(document).on('page:change', function(){
+          if ( typeof CCPEVE !== "undefined" ) {
+            CCPEVE.requestTrust("#{root_path + "/*"}");
+          }
+        });
+      %h4.text-center No IGB headers found.
+      %p If you're not in the ingame browser, this page isn't going to be of any use to you. Open this game in the In-Game browser, and accept its request for trust. If you've already accepted the trust request, refresh this page.

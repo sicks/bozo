@@ -42,6 +42,13 @@ class Map < ActiveRecord::Base
   end
 
   def layout
-    JSON.parse( read_attribute(:layout) )
+    json = read_attribute(:layout)
+    parsed = json && json.length >= 2 ? JSON.parse(json) : nil
+  end
+
+  def as_json( options = {} )
+    h = super(options)
+    h["updated_at"] = h["updated_at"].to_i
+    h
   end
 end
