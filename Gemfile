@@ -61,3 +61,5 @@ group :development, :test do
 end
 
 gem 'quiet_assets', group: :development
+gem 'json-schema', group: :test
+
