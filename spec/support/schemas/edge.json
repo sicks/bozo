@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["id", "from", "to", "label", "dashes", "color", "value"],
+  "properties": {
+    "id": { "type": "integer" },
+    "from": { "type": "integer" },
+    "to": { "type": "integer" },
+    "label": { "type": "string" },
+    "dashes": { "enum": [[5,15], false] },
+    "color": { "type": "string" },
+    "value": { "type": "integer", "enum": [1,2,3,4,5] }
+  }
+}

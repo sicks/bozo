@@ -7,7 +7,7 @@ class Map < ActiveRecord::Base
   accepts_nested_attributes_for :connections
 
   validates_presence_of :corp, :title, :home
-  validates :home, inclusion: { in: System.all, message: "must be a system that exists" }
+  validates :home, inclusion: { in: System.all, message: "must be a System that exists" }
   validates_associated :connections
 
   def home_node

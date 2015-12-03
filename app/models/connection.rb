@@ -4,23 +4,12 @@ class Connection < ActiveRecord::Base
   belongs_to :to, class: System
   belongs_to :hole
 
-  def edge
-    { id: id, from: from_id, to: to_id, label: hole.name, dashes: dashes, color: color, value: width }
-  end
+  validates_presence_of :map, :from, :to, :hole, :stage
+  validates :eol, inclusion: { in: [true, false] }
+  validates :hole, inclusion: { in: Hole.all, message: "must be a Hole that exists" }
 
-  def width
-    1
-    if hole.jumpable > 5000000 && hole.jumpable <= 20000000
-      2
-    elsif hole.jumpable > 20000000 && hole.jumpable <= 300000000
-      3
-    elsif hole.jumpable > 300000000 && hole.jumpable <= 1000000000
-      4
-    elsif hole.jumpable > 1000000000 && hole.jumpable <= 1350000000
-      5
-    elsif hole.jumpable > 1350000000
-      6
-    end
+  def edge
+    { id: id, from: from_id, to: to_id, label: hole.name, dashes: dashes, color: color, value: hole.width }
   end
 
   def color
