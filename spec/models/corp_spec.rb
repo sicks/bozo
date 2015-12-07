@@ -19,4 +19,12 @@ RSpec.describe 'Unit Tests for app/models/corp.rb', type: :model do
       end
     end
   end
+
+  describe Corp, 'methods' do
+    describe "#image_url" do
+      it "returns CCP image server corp logo url" do
+        expect( corp.image_url(64) ).to eq "https://image.eveonline.com/Corporation/#{corp.ccp_id}_64.png"
+      end
+    end
+  end
 end
