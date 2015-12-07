@@ -9,5 +9,6 @@
     "dashes": { "enum": [[5,15], false] },
     "color": { "type": "string" },
     "value": { "type": "integer", "enum": [1,2,3,4,5] }
-  }
+  },
+  "additionalProperties": false
 }

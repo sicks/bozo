@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": ["id","label","shape","color","borderWidth","borderWidthSelected"],
+  "properties": {
+    "id": { "type": "integer" },
+    "label": { "type": "string" },
+    "shape": { "type": "string" },
+    "color": {
+      "type": ["object","string"],
+      "required": ["background","border","highlight"],
+      "properties": {
+        "background": { "type": "string" },
+        "border": { "type": "string" },
+        "highlight": {
+          "type": "object",
+          "required": ["background","border"],
+          "properties": {
+            "background": { "type": "string" },
+            "border": { "type": "string" }
+          }
+        }
+      }
+    },
+    "borderWidth": { "type": "integer" },
+    "borderWidthSelected": { "type": "integer" },
+    "image": { "type": "string" },
+    "size": { "type": "integer" },
+    "mass": { "type": "integer" }
+  },
+  "additionalProperties": false
+}

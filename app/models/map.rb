@@ -11,7 +11,12 @@ class Map < ActiveRecord::Base
   validates_associated :connections
 
   def home_node
-    { id: home.id, label: title, shape: 'circularImage', image: corp.image_url(128), size: 40, mass: 1 }
+    node = System.find(home.id).node
+    node[:shape] = 'circularImage'
+    node[:image] = corp.image_url(128)
+    node[:size] = 40
+    node[:mass] = 1
+    node
   end
 
   def nodes
