@@ -1,5 +1,7 @@
 class System < ActiveRecord::Base
   has_one :system_bonus, primary_key: :ccp_id, foreign_key: :ccp_id, inverse_of: :system
+  has_many :system_jumps, primary_key: :ccp_id, foreign_key: :from_ccp_id
+  has_many :neighboring_systems, through: :system_jumps, class_name: "System", primary_key: :ccp_id, foreign_key: :to_ccp_id
 
   def node
     {
@@ -22,7 +24,7 @@ class System < ActiveRecord::Base
     if is_kspace?
       'ellipse'
     else
-      'circle'
+      'box'
     end
   end
 
