@@ -1,0 +1,142 @@
+
+Feature: User Authentication
+  New users can register
+    with crest
+  Existing users can sign in
+    with crest
+  Signed in Users
+    Users with only one char
+      cannot delete their only char
+      can add another char
+    Users with more than one char
+      can delete a char
+
+All Factories
+  pass linting
+
+Unit Tests for: app/models/char.rb
+  Char scopes
+    default: oldest to newest
+  Char validates
+    presence of uid
+    presence of provider
+    presence of user
+    presence of name
+  Char methods
+    #corp
+      returns this character's current corp
+    (#eaal)
+      sets up an eaal cache
+      returns an api object
+
+Unit Tests for: app/models/connection.rb
+  Connection validates
+    presence of map
+    presence of from
+    presence of to
+    presence of hole
+    presence of stage
+    presence of eol
+    inclusion of hole in holes list
+  Connection methods
+    #edge
+      returns edge data for vis
+    #color
+      when stage 1
+        returns green
+      when stage 2
+        returns yellow
+      when stage 3
+        returns red
+    #dashes
+      when fresh
+        returns false
+      when eol
+        returns [5, 15]
+
+Unit Tests for app/models/corp.rb
+  Corp validates
+    presence of ccp_id
+    uniqueness of ccp_id
+    presence of name
+    uniqueness of name
+  Corp methods
+    #image_url
+      returns CCP image server corp logo url
+
+Unit Tests for: app/models/hole.rb
+  Hole methods
+    #width
+      returns 1 for 5000000t wormholes
+      returns 2 for 20000000t wormholes
+      returns 3 for 300000000t wormholes
+      returns 4 for 1000000000t wormholes
+      returns 5 for 1350000000t wormholes
+      returns 5 for 1800000000t wormholes
+
+Unit Tests for app/models/map.rb
+  Map validates
+    presence of corp
+    presence of title
+    presence of home
+    inclusion of home in systems list
+    validity of connections
+  Map methods
+    #home_node
+      returns home system node data for vis
+    #nodes
+      returns an array
+      starting with the home node
+      followed by node data for vis
+    #edges
+      returns an array
+      containing edge data for vis
+    #systems
+      returns a collection of Systems
+      containing the home system, and those from connections
+    #layout
+      when there's no layout
+        returns nil
+      when a layout has been saved
+        returns positional data for vis
+    #as_json
+      returns updated_at as an integer
+
+Unit Tests for app/models/system.rb
+  System methods
+    #node
+      returns node data for vis
+    #shape
+      when kspace
+        returns 'ellipse'
+      when wspace
+        returns 'box'
+    #color
+      returns background color based on system class
+    #border
+      returns border color based on system bonus
+    #width
+      returns 6 or 2 if system is bonused or not
+    #is_kspace?
+      returns true or false if system is kspace or not
+    #human_class
+      returns a human friendly system class descriptor
+
+Unit Tests for: app/models/user.rb
+  User validates
+    validity of chars
+  User methods
+    ::from_omniauth( auth_hash )
+      when this user's already registered
+        returns the registered user
+      when this user doesn't exist yet
+        returns a newly created user
+    #name
+      returns the name of this user's first character
+    #corps
+      returns an activerecord relation
+      filled with corps
+
+Finished in 3.09 seconds (files took 1.66 seconds to load)
+68 examples, 0 failures
+
